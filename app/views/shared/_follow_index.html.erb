@@ -1,0 +1,23 @@
+<div id = "FollowUserIndex">
+    <h3>お気に入りレビュアー</h3>
+    <div id = "MyReviewContainer">
+        <div id = "MyReviewContent">
+            <% @reviewers.each do |user| %>
+                <%= link_to show_path(user) do %>
+                    <div class = "FollowUser">
+                        <% if user.image.attached? %>
+                            <%= image_tag user.image %>
+                        <% else %>
+                            <%= image_tag('daiana.jpg') %>
+                        <% end %>
+                        <div class = "user-content">
+                            <span class = "user-name"><%= user.name %></span>
+                            <span class = "review-count"><%= user.reviews.count %> reviews</span>
+                        </div>
+                    </div>
+                <% end %>
+            <% end %>
+            <div class = "paginate-content"><%= will_paginate @reviewers, previous_label: '&lt 前へ', next_label: '次へ &gt' %></div>
+        </div>
+    </div>
+</div>

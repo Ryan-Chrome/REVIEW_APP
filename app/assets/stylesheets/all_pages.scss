@@ -1,0 +1,1286 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+body {
+    margin: 0;
+    background-color: rgb(255, 255, 255);
+}
+
+@media screen and (min-width: 1000px) {
+
+    $gray: rgb(134, 134, 134);
+    $form-color: rgba(84, 105, 134, 0.85); 
+    $main-blue: rgb(80, 100, 128);
+    $font-gray: rgb(100, 100, 100);
+
+    #Container {
+        max-width: 1500px;
+        margin: auto;
+        padding-top: 5vh;
+    }
+
+    #header {
+        height: 5.3vh;
+        width: 100%;
+        background-color: $gray;
+        position: fixed;
+        z-index: 100;
+        border-bottom: 2px solid white;
+        #HeaderLogo {
+            position: absolute;
+            top: 7%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 25px;
+        }
+        ul {
+            width: 100%;
+            margin: 0;
+            list-style: none;
+            line-height: 5vh;
+            padding: 0;
+            a {
+                color: white;
+                font-weight: bold;
+                text-decoration: none;
+                li {
+                    float: right;
+                    padding: 0 15px;
+                }
+            }
+            .signup-link {
+                background-color: rgb(119, 54, 54);
+                margin-right: 30px;
+            }
+            .login-link {
+                background-color: $main-blue;
+            }
+        }
+    }
+
+    #fotter {
+        height: 250px;
+        background-color: $gray;
+        position: relative;
+        z-index: 2;
+        max-width: 1500px;
+        margin: auto;
+    }
+
+    #Home {
+        width: 100%;
+        height: 95vh;
+        background-image: url('home-background.jpg');
+        background-size: cover;
+        background-position: center center;
+        position: relative;
+        &:before {
+            content: "";
+            height: 100%;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.596);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+
+    .Top {
+        #TopContent {
+            position: absolute;
+            top: 46%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            text-align: center;
+            h1 {
+                margin: 0;
+                font-size: 110px;
+                color: white;
+            }
+            span {
+                font-size: 24px;
+                font-weight: bold;
+                color: white;
+            }
+        }
+    }
+
+    .Signup {
+        #SignupContent {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            text-align: center;
+            width: 670px;
+            height: 670px;
+            background-color: $form-color;
+            border-radius: 1000px;
+            border: 2px solid white;
+            h2 {
+                color: white;
+                border-bottom: 2px solid white;
+                width: 520px;
+                margin: 85px auto 45px auto;
+                font-weight: bold;
+                font-size: 25px;
+                padding-bottom: 10px;
+            }
+            a {
+                color: white;
+                margin-top: 40px;
+                display: inline-block;
+            }
+            form {
+                .field {
+                    width: 340px;
+                    margin: 25px auto 0 auto;
+                    label {
+                        color: white;
+                        float: left;
+                        font-weight: bold;
+                    }
+                    .form {
+                        width: 100%;
+                        font-size: 16px;
+                    }
+                }
+                .btn {
+                    margin-top: 50px;
+                    background-color: $gray;
+                    color: white;
+                    font-weight: bold;
+                    border: none;
+                    padding: 5px 35px;
+                    border-radius: 15px;
+                    font-size: 16px;
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
+
+    .Login {
+        #LoginContent {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            text-align: center;
+            width: 670px;
+            height: 670px;
+            background-color: $form-color;
+            border-radius: 1000px;
+            border: 2px solid white;
+            h2 {
+                color: white;
+                border-bottom: 2px solid white;
+                width: 520px;
+                margin: 85px auto 80px auto;
+                font-weight: bold;
+                font-size: 25px;
+                padding-bottom: 10px;
+            }
+            form {
+                .field {
+                    width: 340px;
+                    margin: 40px auto 0 auto;
+                    .label {
+                        font-size: 14px;
+                        color: white;
+                        float: left;
+                        font-weight: bold;
+                        padding-left: 0;
+                    }
+                    .form {
+                        width: 100%;
+                        font-size: 16px;
+                    }
+                    .checkbox-label {
+                        color: white;
+                        font-weight: bold;
+                    }
+                }
+                .btn {
+                    margin-top: 50px;
+                    margin-bottom: 30px;
+                    background-color: $gray;
+                    color: white;
+                    font-weight: bold;
+                    border: none;
+                    padding: 5px 35px;
+                    border-radius: 15px;
+                    font-size: 16px;
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+            }
+            a {
+                color: white;
+                margin-top: 10px;
+                display: inline-block;
+            }
+        }
+    }
+
+    //パスワード再設定用メール送信フォーム
+
+    .PasswordNew {
+        #PasswordNewContent {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            text-align: center;
+            width: 670px;
+            height: 670px;
+            background-color: $form-color;
+            border-radius: 1000px;
+            border: 2px solid white;
+            h2 {
+                color: white;
+                border-bottom: 2px solid white;
+                width: 520px;
+                margin: 85px auto 52px auto;
+                font-size: 25px;
+                font-weight: bold;
+                padding-bottom: 10px;
+            }
+            a {
+                color: white;
+                margin-top: 20px;
+                display: inline-block;
+            }
+            form {
+                .field {
+                    width: 340px;
+                    margin: 100px auto 0 auto;
+                    label {
+                        color: white;
+                        float: left;
+                        font-weight: bold;
+                    }
+                    .form {
+                        width: 100%;
+                        font-size: 16px;
+                    }
+                }
+                .actions {
+                    margin-top: 40px;
+                    margin-bottom: 30px;
+                    .btn {
+                        margin-top: 50px;
+                        background-color: $gray;
+                        color: white;
+                        font-weight: bold;
+                        border: none;
+                        padding: 5px 35px;
+                        border-radius: 15px;
+                        font-size: 16px;
+                        &:hover {
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    #Edit {
+        width: 700px;
+        margin: auto;
+        background-color: $main-blue;
+        #EditContent {
+            width: 650px;
+            height: 100%;
+            margin: auto;
+            border-right: 3px solid white;
+            border-left: 3px solid white;
+            form {
+                .image_field {
+                    width: 400px;
+                    margin: auto;
+                    padding-top: 60px;
+                    margin-bottom: 50px;
+                    #image-span {
+                        img {
+                            width: 140px;
+                            height: 140px;
+                            border: 3px solid white;
+                            border-radius: 1000px;
+                            object-fit: cover;
+                            display: inline-block;
+                            margin-left: 50px;
+                        }
+                        span {
+                            width: 140px;
+                            height: 140px;
+                            border: 3px solid white;
+                            border-radius: 1000px;
+                            display: inline-block;
+                            margin-left: 50px;
+                            line-height: 140px;
+                            text-align: center;
+                            background-color: $gray;
+                            color: white;
+                            font-weight: bold;
+                        }
+                    }
+                    .image_file {
+                        display: none;
+                    }
+                    label {
+                        float: right;
+                        margin-top: 55px;
+                        margin-right: 70px;
+                        background-color: $gray;
+                        color: white;
+                        padding: 3px 20px;
+                        border-radius: 50px;
+                        font-size: 14px;
+                    }
+                }
+                .field {
+                    width: 400px;
+                    margin: 20px auto 0 auto;
+                    label {
+                        font-size: 14px;
+                        font-weight: bold;
+                        color: white;
+                    }
+                    .form {
+                        width: 100%;
+                    }
+                }
+                .actions {
+                    width: 100%;
+                    .btn {
+                        margin: 50px auto 0 auto;
+                        display: block;
+                        border: none;
+                        background-color: $gray;
+                        padding: 5px 40px;
+                        border-radius: 100px;
+                        color: white;
+                    }
+                }
+            }
+            h3 {
+                color: white;
+                border-bottom: 2px solid white;
+                padding-left: 10px;
+                padding-bottom: 5px;
+                margin-right: 100px;
+                margin-top: 70px;
+                font-size: 20px;
+            }
+            .button_to {
+                margin-top: 50px;
+                display: block;
+                input {
+                    display: block;
+                    margin: auto;
+                    background-color: rgb(168, 68, 68);
+                    color: white;
+                    border: none;
+                    padding: 5px 50px;
+                    border-radius: 100px;
+                }
+            }
+            a {
+                color: white;
+                margin: 50px auto 0 auto;
+                display: block;
+                text-align: center;
+                padding-bottom: 50px;
+            }
+        }
+    }
+
+    #SideContent {
+        width: 250px;
+        height: 95vh;
+        background-color: $main-blue;
+        position: fixed;
+        z-index: 50;
+        border-right: 3px solid white;
+        img {
+            width: 140px;
+            height: 140px;
+            border-radius: 1000px;
+            border: 3px solid white;
+            object-fit: cover;
+            display: block;
+            margin: 30px auto 10px auto; 
+        }
+        .side_user_name {
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 15px;
+        }
+        ul {
+            list-style: none;
+            margin-top: 50px;
+            li {
+                color: white;
+                font-size: 15px;
+                font-weight: bold;
+                margin-top: 30px;
+                border-bottom: 3px solid white;
+                padding-left: 8px;
+                a {
+                    text-decoration: none;
+                    color: white;
+                }
+            }
+        }
+    }
+
+    #MainContent {
+        margin-left: 250px;
+        background-color: rgb(214, 214, 214);
+        min-height: 95vh;
+        position: relative;
+    }
+
+    .Show {
+        padding-top: 30px;
+        .user_img {
+            height: 200px;
+            width: 200px;
+            border: 3px solid white;
+            border-radius: 1000px;
+            object-fit: cover;
+            display: block;
+            margin: auto;
+        }
+        h5 {
+            color: rgb(56, 56, 56);
+            text-align: center;
+            font-size: 22px;
+            font-weight: bold;
+            margin-top: 18px;
+            margin-bottom: 25px;
+        }
+        #Status {
+            ul {
+                list-style: none;
+                padding: 0;
+                margin: auto;
+                text-align: center;
+                overflow: hidden;
+                display: block;
+                width: 300px;
+                li {
+                    float: left;
+                    width: 144px;
+                    padding-top: 2px;
+                    padding-bottom: 2px;
+                    border-right: 4px solid rgb(100, 100, 100);
+                    border-left: 2px solid rgb(100, 100, 100);
+                    &:first-child {
+                        border-left: 4px solid rgb(100, 100, 100);
+                        border-right: 2px solid rgb(100, 100, 100);
+                    }
+                    span {
+                        font-size: 16px;
+                        display: block;
+                        font-weight: bold;
+                        color: rgb(56, 56, 56);
+                    }
+                }
+            }
+        }
+        #FollowForm {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0;
+            span {
+                color: rgb(54, 54, 54);
+                font-size: 16px;
+                font-weight: bold;
+                background-color: white;
+                padding: 6px 30px;
+                border: 2px solid $main-blue;
+                border-right: 0;
+            }
+            #follow_form {
+                display: inline-block;
+                form {
+                    .follow-btn {
+                        background-color: white;
+                        border: 2px solid $main-blue;
+                        font-size: 16px;
+                        padding: 4.5px 5px;
+                        box-sizing: border-box;
+                        width: 150px;
+                        font-weight: bold;
+                    }
+                    .unfollow-btn {
+                        background-color: $main-blue;
+                        color: white;
+                        border: 2px solid $main-blue;
+                        font-size: 16px;
+                        padding: 4.5px 5px;
+                        box-sizing: border-box;
+                        width: 150px;
+                    }
+                }
+            }
+        }
+
+        #MyReviewContainer {
+            padding: 0 30px;
+            padding-bottom: 30px;
+            margin-top: 40px;
+            h3 {
+                font-size: 20px;
+                color: $font-gray;
+                font-weight: bold;
+                border-bottom: 3px solid $font-gray;
+                margin-right: 50%; 
+                padding-bottom: 5px;
+                margin-bottom: 20px;
+                padding-left: 20px; 
+            }
+            #MyReviewContent {
+                padding: 0 10px;
+                font-size: 0;
+                .ReviewLink {
+                    width: 23%;
+                    margin: 10px 1% 20px 1%;
+                    background-color: white;
+                    display: inline-block;
+                    border-radius: 10px;
+                    padding-bottom: 8px;
+                    .img-content {
+                        width: 100%;
+                        position: relative;
+                        &:before {
+                            content: "";
+                            display: block;
+                            padding-top: 90%;
+                        }
+                        img {
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            bottom: 0;
+                            right: 0;
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                            border-radius: 10px 10px 0 0;
+                        }
+                    }
+                    .review-content {
+                        display: inline-block;
+                        vertical-align: top;
+                        margin: 10px 0 0 0;
+                        .review-name {
+                            font-size: 15px;
+                            display: block;
+                            margin-left: 10px;
+                            font-weight: bold;
+                            color: $font-gray;
+                        }
+                        .star {
+                            display: inline-block;
+                            margin-left: 10px;
+                            margin-top: 7px;
+                            img {
+                                height: 17px;
+                                width: 17px;
+                            }
+                        }
+                    }
+                    .config-content {
+                        text-align: right;
+                        margin-top: 5px;
+                        a {
+                            color: $font-gray;
+                            font-size: 14px;
+                            margin-right: 15px;
+                            font-weight: bold;
+                        }
+                    }
+                }
+                .paginate-content {
+                    text-align: center;
+                    .pagination {
+                        font-size: 16px;
+                    }
+                }
+            }
+        }
+    }
+
+    #ReviewShow {
+        display: flex;
+        padding-bottom: 50px;
+        padding-top: 1vh;
+        position: relative;
+        #Modal {
+            display: none;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 95vh;
+            background-color: rgba(0, 0, 0, 0.849);
+            z-index: 5;
+            padding-left: 250px;
+            position: fixed;
+            max-width: 1500px;
+            margin: 5vh auto 0 auto;
+            #ModalInner {
+                display: block;
+                position: relative;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 80%;
+                &:before {
+                    content: "";
+                    display: block;
+                    padding-top: 80%;
+                }
+                img {
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    object-fit: contain;
+                }
+            }
+        }
+        #LeftContent {
+            width: 50%;
+            color: $font-gray;
+            position: relative;
+            h3 {
+                border-bottom: 3px solid $font-gray;
+                margin: 50px 30px 0 30px;
+                font-size: 20px;
+                padding-bottom: 3px;
+                font-weight: bold;
+            }
+            .reviewer-name {
+                margin: 5px 0 0 30px;
+                display: block;
+                font-weight: bold;
+                a {
+                    color: $font-gray;
+                    text-decoration: underline;
+                }
+            }
+            a {
+                text-decoration: none;
+                span {
+                    color: white;
+                    background-color: $gray;
+                    padding: 4px 20px;
+                    border-radius: 10px;
+                    display: block;
+                    margin: 10px 30px 0 30px;
+                    text-align: center;
+                }
+            }
+            .stars {
+                margin-top: 30px;
+                font-weight: bold;
+                margin-bottom: 30px;
+                margin-right: 30px;
+                overflow: hidden;
+                text-align: center;
+                .label {
+                    margin-right: 5px;
+                    color: $font-gray;
+                    font-size: 16px;
+                    padding: 0;
+                    vertical-align: middle;
+                }
+                span {
+                    img {
+                        height: 22px;
+                        width: 22px;
+                    }
+                }
+            }
+            .review-text {
+                margin: 0 30px 0 30px;
+                h5 {
+                    font-size: 16px;
+                    margin-bottom: 10px;
+                    margin-left: 10px;
+                    font-weight: bold;
+                }
+                p {
+                    box-sizing: border-box;
+                    background-color: white;
+                    margin-top: 3px;
+                    margin-bottom: 25px;
+                    padding: 5px;
+                    border-radius: 10px;
+                    color: $font-gray;
+                    font-size: 14px;
+                    max-height: 55vh;
+                    overflow: auto;
+                }
+            }
+            .good-count {
+                background-color: $main-blue;
+                text-align: center;
+                margin: 0 30px 0 30px;
+                box-sizing: border-box;
+                height: 40px;
+                font-size: 0;
+                .good {
+                    font-weight: bold;
+                    color: white;
+                    font-size: 18px;
+                    width: 50%;
+                    display: inline-block;
+                    line-height: 40px;
+                }
+                .count {
+                    font-weight: bold;
+                    color: $font-gray;
+                    font-size: 18px;
+                    width: 50%;
+                    display: inline-block;
+                    background-color: white;
+                    line-height: 36px;
+                    box-sizing: border-box;
+                    border: 2px solid $main-blue;
+                }
+            }
+            #review_like_form {
+                text-align: center;
+                margin: 0 30px 0 30px;
+                form {
+                    .good-btn-content {
+                        font-size: 0;
+                        span {
+                            width: 50%;
+                            display: inline-block;
+                            box-sizing: border-box;
+                            font-size: 18px;
+                            font-weight: bold;
+                            background-color: white;
+                            padding: 5px;
+                            border: 2px solid $main-blue;
+                            border-left: 0px;
+                        }
+                        .like-btn {
+                            width: 50%;
+                            box-sizing: border-box;
+                            padding: 5px;
+                            font-size: 18px;
+                            font-weight: bold;
+                            background-color: white;
+                            color: $main-blue;
+                            border: 2px solid $main-blue;
+                            cursor: pointer;
+                        }
+                        .unlike-btn {
+                            width: 50%;
+                            box-sizing: border-box;
+                            padding: 5px;
+                            font-size: 18px;
+                            font-weight: bold;
+                            background-color: $main-blue;
+                            color: white;
+                            border: 2px solid $main-blue;
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
+        }
+        #RightContent {
+            width: 55%;
+            .main-photo {
+                position: relative;
+                width: 100%;
+                margin-top: 70px;
+                &:before {
+                    content: "";
+                    display: block;
+                    padding-top: 100%;
+                }
+                img {
+                    width: 90%;
+                    height: 90%;
+                    margin: auto;
+                    object-fit: cover;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    bottom: 0;
+                    right: 0;
+                    border-radius: 20px;
+                }
+            }
+            .sub-photo {
+                ul {
+                    list-style: none;
+                    padding: 0;
+                    width: 90%;
+                    margin: 0 auto 0 auto;
+                    li {
+                        float: left;
+                        width: 25%;
+                        position: relative;
+                        &:before {
+                            content: "";
+                            display: block;
+                            padding-top: 100%;
+                        }
+                        img {
+                            position: absolute;
+                            top: 0;
+                            right: 0;
+                            left: 0;
+                            bottom: 0;
+                            width: 90%;
+                            height: 90%;
+                            margin: auto;
+                            object-fit: cover;
+                            border-radius: 10px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    #ReviewCategory {
+        .back-btn {
+            font-size: 25px;
+            font-weight: bold;
+            position: absolute;
+            top: 30px;
+            left: 10px;
+            color: $font-gray;
+        }
+        .search-box {
+            text-align: center;
+            padding-top: 80px;
+            font-size: 0;
+            .search-text {
+                box-sizing: border-box;
+                width: 300px;
+                font-size: 16px;
+                padding: 2.5px;
+                border-radius: 10px 0 0 10px;
+                border: none;
+                vertical-align: bottom;
+            }
+            .search-btn {
+                width: 70px;
+                box-sizing: border-box;
+                border-radius: 0 10px 10px 0;
+                border: none;
+                padding: 3.5px 0;
+                vertical-align: middle;
+                background-color: $main-blue;
+                color: white;
+                font-size: 14px;
+            }
+        }
+        .category-box {
+            padding: 30px 30px 50px 30px;
+            overflow: hidden;
+            h3 {
+                margin-bottom: 0;
+                border-bottom: 3px solid $gray;
+                padding-left: 10px;
+                margin-left: 20px;
+                color: $font-gray;
+                margin-right: 40%;
+                font-weight: bold;
+                font-size: 20px;
+                padding-bottom: 3px;
+            }
+            ul {
+                list-style: none;
+                padding: 0;
+                a {
+                    color: white;
+                    li {
+                        width: 30%;
+                        margin: 30px 1.6% 0 1.6%;
+                        height: 150px;
+                        float: left;
+                        text-align: center;
+                        background-color: white;
+                        border-radius: 20px;
+                        font-size: 14px;
+                        position: relative;
+                        div {
+                            width: 100%;
+                            height: 100%;
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                            &:before {
+                                content: "";
+                                background-color: black;
+                                opacity: 0.5;
+                                width: 100%;
+                                height: 100%;
+                                position: absolute;
+                                border-radius: 20px;
+                                z-index: 1;
+                            }
+                            img {
+                                object-fit: cover;
+                                width: 100%;
+                                height: 100%;
+                                border-radius: 20px;
+                            }
+                        }
+                        .category-box {
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                            width: 100%;  
+                            padding: 0; 
+                            z-index: 5;
+                            .category-name {
+                                margin-bottom: 10px;
+                                display: inline-block;
+                                font-weight: bold;
+                                font-size: 16px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    #ReviewIndex {
+        padding: 0 30px;
+        .back-btn {
+            font-size: 18px;
+            display: inline-block;
+            font-weight: bold;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: $font-gray;
+            span {
+                font-size: 18px;
+                font-weight: bold;
+                color: $font-gray;
+                margin-left: 10px;
+                vertical-align: top;
+                height: 35px;
+                display: inline-block;
+                line-height: 35px;
+            }
+            i {
+                font-size: 34px;
+            }
+            a {
+                color: $font-gray;
+            }
+        }
+        h3 {
+            font-size: 20px;
+            color: $font-gray;
+            border-bottom: 3px solid $font-gray;
+            margin-right: 40%; 
+            margin-left: 20px;
+            margin-top: 0;
+            padding-top: 90px;
+            padding-left: 10px;
+            padding-bottom: 3px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        #MyReviewContent {
+            padding: 0 10px;
+            font-size: 0;
+            .ReviewLink {
+                width: 23%;
+                margin: 10px 1% 20px 1%;
+                background-color: white;
+                display: inline-block;
+                border-radius: 10px;
+                .img-content {
+                    width: 100%;
+                    position: relative;
+                    &:before {
+                        content: "";
+                        display: block;
+                        padding-top: 90%;
+                    }
+                    img {
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                        bottom: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                        border-radius: 10px 10px 0 0;
+                    }
+                }
+                .review-content {
+                    display: inline-block;
+                    vertical-align: top;
+                    margin: 10px 0;
+                    .review-name {
+                        font-size: 15px;
+                        display: block;
+                        margin-left: 10px;
+                        font-weight: bold;
+                        color: $font-gray;
+                    }
+                    .star {
+                        display: inline-block;
+                        margin-left: 10px;
+                        margin-top: 7px;
+                        img {
+                            height: 17px;
+                            width: 17px;
+                        }
+                    }
+                    .reviewer-name {
+                        line-height: 80px;
+                        font-size: 15px;
+                        display: block;
+                        margin-left: 10px;
+                        font-weight: bold;
+                        color: $font-gray;
+                    }
+                }
+            }
+            h2  {
+                font-size: 20px;
+                color: $font-gray;
+                text-align: center;
+                margin-top: 100px;
+            }
+            .paginate-content {
+                text-align: center;
+                .pagination {
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+
+    #ReviewNew {
+        width: 100%;
+        margin: auto;
+        #ReviewForm {
+            width: 80%;
+            box-sizing: border-box;
+            background-color: $main-blue;
+            margin: auto;
+            .review-form-content {
+                margin: 0 25px;
+                padding: 5vh 0;
+                min-height: 95vh;
+                border-left: 3px solid white;
+                border-right: 3px solid white;
+                font-size: 0;
+                .form_field {
+                    width: 90%;
+                    padding: 20px 10px 10px 10px;
+                    margin: auto;
+                    label {
+                        color: white;
+                        font-size: 16px;
+                        font-weight: bold;
+                        display: block;
+                        padding-left: 5%;
+                    }
+                    .form {
+                        width: 90%;
+                        margin: auto;
+                        display: block;
+                        font-size: 16px;
+                    }
+                    select {
+                        width: 90%;
+                        margin: auto;
+                        display: block;
+                        font-size: 16px;
+                        padding: 2px 2px;
+                    }
+                    .text {
+                        height: 30vh;
+                        border-radius: 5px;
+                    }
+                }
+                #star {
+                    padding-top: 30px;
+                    padding-left: 12%;
+                    padding-bottom: 10px;
+                    label {
+                        color: white;
+                        font-size: 16px;
+                        font-weight: bold;
+                        vertical-align: bottom;
+                        margin-bottom: 0;
+                        margin-right: 10px;
+                    }
+                    img {
+                        width: 22px;
+                        height: 22px; 
+                    }
+                }
+                .image_form_content {
+                    width: 80%;
+                    margin: auto;
+                    text-align: center;
+                    margin-top: 30px;
+                    .image_form {
+                        display: inline-block;
+                        font-size: 0;
+                        width: 20%;
+                        overflow: hidden;
+                        .image_label {
+                            display: block;
+                            .preview{
+                                display: inline-block;
+                                width: 80%;
+                                position: relative;
+                                background-color: $gray;
+                                border-radius: 10px;
+                                cursor: pointer;
+                                &:before {
+                                    display: block;
+                                    content: "";
+                                    padding-top: 100%;
+                                }
+                                span {
+                                    position: absolute;
+                                    top: 50%;
+                                    left: 50%;
+                                    transform: translate(-50%, -50%);
+                                    color: white;
+                                    font-size: 25px;
+                                    font-weight: bold;
+                                    display: block;
+                                }
+                                img {
+                                    position: absolute;
+                                    top: 0;
+                                    left: 0;
+                                    bottom: 0;
+                                    right: 0;
+                                    width: 100%;
+                                    height: 100%;
+                                    object-fit: cover;
+                                    border-radius: 10px;
+                                }
+                            }
+                        }
+                        .image_field {
+                            display: none;
+                        }
+                    }
+                }
+                .btn {
+                    width: 80%;
+                    display: block;
+                    margin: 50px auto;
+                    background-color: $gray;
+                    color: white;
+                    border: none;
+                    box-sizing: border-box;
+                    padding: 3px 10px;
+                    border-radius: 5px;
+                    font-size: 16px;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+
+    #FollowUserIndex {
+        padding: 0 30px;
+        h3 {
+            font-size: 20px;
+            color: $font-gray;
+            border-bottom: 3px solid $font-gray;
+            margin-right: 50%; 
+            margin-top: 0;
+            padding-top: 50px;
+            padding-left: 10px;
+            padding-bottom: 3px;
+            font-weight: bold;
+            margin-left: 10px;
+            margin-bottom: 20px;
+        }
+        #MyReviewContent {
+            padding: 0 10px;
+            font-size: 0;
+            .FollowUser {
+                width: 100%;
+                background-color: white;
+                border-radius: 20px;
+                margin-bottom: 30px;
+                img {
+                    width: 20%;
+                    height: 80px;
+                    object-fit: cover;
+                    border-radius: 20px 0 0 20px;
+                }
+                .user-content {
+                    display: inline-block;
+                    vertical-align: top;
+                    width: 80%;
+                    position: relative;
+                    .user-name {
+                        font-size: 16px;
+                        line-height: 80px;
+                        display: inline-block;
+                        margin-left: 20px;
+                        color: $font-gray;
+                        font-weight: bold;
+                    }
+                    .review-count {
+                        font-size: 16px;
+                        line-height: 80px;
+                        display: inline-block;
+                        position: absolute;
+                        right: 0;
+                        margin-right: 30px;
+                        color: $font-gray;
+                        font-weight: bold;
+                    }
+                }
+            }
+            .paginate-content {
+                text-align: center;
+                .pagination {
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+}

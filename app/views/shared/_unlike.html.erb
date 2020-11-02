@@ -1,0 +1,6 @@
+<%= form_with(model: current_user.review_relationships.find_by(review_id: @review.id), html: {method: :delete}, remote: true) do |f| %>
+    <div class = "good-btn-content">
+        <%= f.submit "good！ 済み", class: "unlike-btn" %>
+        <span><i class="fas fa-thumbs-up"></i> <%= @review.review_relationships.count %></span>
+    </div>
+<% end %>

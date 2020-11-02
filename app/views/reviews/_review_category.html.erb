@@ -1,0 +1,24 @@
+<div id = "ReviewCategory">
+    <div class = "search-box">
+        <%= form_with url: reviews_path, method: :get, local: true do |f| %>
+            <%= f.text_field :search, class: "search-text" %>
+            <%= f.submit "検索", class: "search-btn" %>
+        <% end %>
+    </div>
+    <div class = "category-box">
+        <h3><i class="fas fa-search"></i> カテゴリー</h3>
+        <ul>
+            <% @reviews_category.each do |category| %>
+                <%= link_to reviews_path(category: category[0]) do %>
+                    <li>
+                        <div><%= image_tag "#{category[2]}" %></div>
+                        <span class = "category-box">
+                            <span class = "category-name"><%= category[0] %></span><br>
+                            <span><%= category[1] %> reviews</span>
+                        </span>
+                    </li>
+                <% end %>
+            <% end %>
+        </ul>
+    </div>
+</div>

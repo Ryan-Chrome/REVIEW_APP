@@ -1,0 +1,11 @@
+<div id = "SideContent">
+    <%= render 'shared/side_content' %>
+</div>
+
+<div id = "MainContent">
+    <% if params[:category].present? || params[:search].present?  %>
+        <%= render 'review_index' %>
+    <% else %>
+        <%= render 'review_category' %>
+    <% end %>
+</div>

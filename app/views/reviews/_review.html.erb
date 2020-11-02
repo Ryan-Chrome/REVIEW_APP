@@ -1,0 +1,112 @@
+<div id = "ReviewShow"> 
+    <div id = "Modal">
+        <span id = "ModalInner">
+            
+        </span>
+    </div>
+    <div id = "LeftContent">
+        <h3><%= @review.name %></h3>
+        <span class = "reviewer-name">
+            レビューユーザー：<%= link_to @review.user.name, show_path(@review.user) %>
+        </span>
+        <div class = "stars"><span class = "label">評価：</span><span id = "star-rate-<%= @review.id %>"></span></div>
+        <div class = "review-text">
+            <h5>評価詳細</h5>
+            <p>
+                <%= safe_join(@review.content.split("\n"), tag(:br)) %>
+            </p>
+        </div>
+        <% if current_user == @review.user %>
+            <div class = "good-count">
+                <span class = "good">good!</span>
+                <span class = "count"><i class="fas fa-thumbs-up"></i> <%= @review.review_relationships.count %></span>
+            </div>
+        <% end %>
+        <%= render 'shared/review_relationship_form' %>
+    </div>
+    <div id = "RightContent">
+        <div class = "main-photo">
+            <%= image_tag @review.image1, id: "image1" if @review.image1.attached? %>
+        </div>
+        <div class = "sub-photo">
+            <ul>
+                <li><%= image_tag @review.image2, id: "image2" if @review.image2.attached? %></li>
+                <li><%= image_tag @review.image3, id: "image3" if @review.image3.attached? %></li>
+                <li><%= image_tag @review.image4, id: "image4" if @review.image4.attached? %></li>
+                <li><%= image_tag @review.image5, id: "image5" if @review.image5.attached? %></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $("#star-rate-<%= @review.id %>").raty({
+        size: 36,
+        starOff: '<%= asset_path('star-off.png') %>',
+        starOn: '<%= asset_path('star-on.png') %>',
+        starHalf: '<%= asset_path('star-half.png') %>',
+        half: true,
+        readOnly: true,
+        score: <%= @review.rate %>,
+    });
+
+    var Modal = document.getElementById("Modal");
+    var ModalInner = document.getElementById("ModalInner");
+    
+    Modal.onclick = function() {
+        var modal_image = document.getElementById("modal-image");
+        ModalInner.removeChild(modal_image);
+        Modal.style.display = "none";
+    };
+    
+    var image1 = document.getElementById("image1");
+    image1.onclick = function() {
+        var src = image1.getAttribute('src');
+        var NewElement = document.createElement('img');
+        NewElement.src = src;
+        NewElement.setAttribute("id", "modal-image");
+        Modal.style.display = "block";
+        ModalInner.appendChild(NewElement);
+    };
+
+    var image2 = document.getElementById("image2");
+    image2.onclick = function() {
+        var src = image2.getAttribute('src');
+        var NewElement = document.createElement('img');
+        NewElement.src = src;
+        NewElement.setAttribute("id", "modal-image");
+        Modal.style.display = "block";
+        ModalInner.appendChild(NewElement);
+    };
+
+    var image3 = document.getElementById("image3");
+    image3.onclick = function() {
+        var src = image3.getAttribute('src');
+        var NewElement = document.createElement('img');
+        NewElement.src = src;
+        NewElement.setAttribute("id", "modal-image");
+        Modal.style.display = "block";
+        ModalInner.appendChild(NewElement);
+    };
+
+    var image4 = document.getElementById("image4");
+    image4.onclick = function() {
+        var src = image4.getAttribute('src');
+        var NewElement = document.createElement('img');
+        NewElement.src = src;
+        NewElement.setAttribute("id", "modal-image");
+        Modal.style.display = "block";
+        ModalInner.appendChild(NewElement);
+    };
+
+    var iamge5 = document.getElementById("image5");
+    image5.onclick = function() {
+        var src = image5.getAttribute('src');
+        var NewElement = document.createElement('img');
+        NewElement.src = src;
+        NewElement.setAttribute("id", "modal-image");
+        Modal.style.display = "block";
+        ModalInner.appendChild(NewElement);
+    };
+
+</script>

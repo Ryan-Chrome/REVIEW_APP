@@ -1,0 +1,46 @@
+<div id = "ReviewIndex">
+    <span class = "back-btn"><%= link_to reviews_path do %><i class="far fa-arrow-alt-circle-left"></i><span>カテゴリー選択へ</span><% end %></span>
+    <% if params[:category].present? %>
+        <h3><i class="fas fa-search"></i> カテゴリー：<%= params[:category] %></h3>
+    <% end %>
+    <% if params[:search].present? %>
+        <h3><i class="fas fa-search"></i> 検索結果：<%= params[:search] %></h3>
+    <% end %>
+    <div id = "MyReviewContainer">
+        <div id = "MyReviewContent">
+            <% if @reviews.present? %>
+                <% @reviews.each do |review| %>
+                    <%= link_to review do %>
+                        <div class = "ReviewLink">
+                            <div class = "img-content">
+                                <% if review.image1.attached? %>
+                                    <%= image_tag review.image1 %>
+                                <% else %>
+                                    <%= image_tag('daiana.jpg') %>
+                                <% end %>
+                            </div>
+                            <div class = "review-content">
+                                <span class = "review-name"><%= review.name %></span>
+                                <div id = "star-rate-<%= review.id %>" class = "star"></div>
+                                <script>
+                                    $("#star-rate-<%= review.id %>").raty({
+                                        size: 36,
+                                        starOff: '<%= asset_path('star-off.png') %>',
+                                        starOn: '<%= asset_path('star-on.png') %>',
+                                        starHalf: '<%= asset_path('star-half.png') %>',
+                                        half: true,
+                                        readOnly: true,
+                                        score: <%= review.rate %>,
+                                    });
+                                </script>
+                            </div>
+                        </div>
+                    <% end %>
+                <% end %>
+            <% else %>
+                <h2>該当レビューなし</h2>
+            <% end %>
+            <div class = "paginate-content"><%=  will_paginate @reviews, previous_label: '&lt 前へ', next_label: '次へ &gt' %></div>
+        </div>
+    </div>
+</div>

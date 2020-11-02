@@ -1,0 +1,103 @@
+<div id = "Edit">
+  <div id = "EditContent">
+
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+
+      <div class = "image_field">
+        <span id = "image-span">
+          <% if current_user.image.attached? %>
+            <%= image_tag current_user.image, id: "image" %>
+          <% else %>
+            <span>プレビュー</span>
+          <% end %>
+        </span>
+        <%= f.label :image, "画像変更" %>
+        <%= f.file_field :image, class: "image_file" %>
+      </div>
+
+      <div class = "field">
+        <%= f.label :name, "ユーザー名" %><br>
+        <%= f.text_field :name, placeholder: "30文字以内", class: "form" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :email, "メールアドレス" %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form" %>
+      </div>
+
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+      <% end %>
+
+      <div class="field">
+        <%= f.label :password, "新しいパスワード（変更しない場合は入力しない）" %><br />
+        <%= f.password_field :password, autocomplete: "new-password", placeholder: "#{@minimum_password_length}文字以上", class: "form" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password_confirmation, "新しいパスワード（確認）" %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :current_password, "現在のパスワード（必須）" %> <i><br />
+        <%= f.password_field :current_password, autocomplete: "current-password", class: "form" %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "変更", class: "btn" %>
+      </div>
+    <% end %>
+
+    <h3>アカウントを削除しますか？</h3>
+
+    <p><%= button_to "アカウントを削除します", registration_path(resource_name), data: { confirm: "本当に削除しますか？" }, method: :delete %></p>
+
+    <%= link_to "マイページへ戻る", :back %>
+  </div>
+</div>
+
+<script type = "text/javascript">
+  var img = document.getElementById("user_image");
+  var preview = document.getElementById("image-span");
+  var image = document.getElementById("image");
+
+  img.addEventListener("change", function(evt){
+    var file = evt.target.files;
+    var num = file.length;
+    var set_preview = document.getElementById("preview-image");
+    if (num == 0) {
+      if (gon.image_attach) {
+        image.style.display = "inline-block";
+
+        preview.removeChild(set_preview);
+      } else {
+        preview.innerHTMl = "<span>プレビュー</span>";
+      }
+    } else {
+      var reader = new FileReader();
+
+      reader.readAsDataURL(file[0]);
+
+      reader.onload = function(){
+        var dataUrl = reader.result;
+        if (gon.image_attach) {
+          image.style.display = "none";
+
+          if (set_preview) {
+            preview.removeChild(set_preview);
+          }
+
+          var NewElement = document.createElement("img");
+          NewElement.src = dataUrl;
+          NewElement.setAttribute("id", "preview-image");
+          preview.appendChild(NewElement);
+        } else {
+          preview.innerHTML = "<img src = '" + dataUrl + "'>";
+        }
+      }
+    }
+  },false);
+</script>
+

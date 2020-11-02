@@ -1,0 +1,14 @@
+<% if current_user.image.attached? %>
+    <%= image_tag current_user.image %>
+<% else %>
+    <%= image_tag('daiana.jpg') %>
+<% end %>
+<h5 class = "side_user_name"><%= current_user.name %></h5>
+
+<ul>
+    <li><%= link_to  show_path(current_user) do %><i class="fas fa-user"></i> マイページ<% end %></li>
+    <li><%= link_to  reviews_path do %><i class="fas fa-newspaper"></i> レビュー閲覧<% end %></li>
+    <li><%= link_to  new_review_path do %><i class="fas fa-file"></i> 新規レビュー<% end %></li>
+    <li><%= link_to  follow_path do %><i class="fas fa-star"></i> お気に入りレビュアー<% end %></li>
+    <li><%= link_to  edit_user_registration_path do %><i class="fas fa-cogs"></i> アカウント編集<% end %></li>
+</ul>

@@ -1,0 +1,3 @@
+<%= form_with(model: current_user.relationships.find_by(follow_id: @user.id), html: {method: :delete}, remote: true) do |f| %>
+    <%= f.submit "お気に入り中", class: "unfollow-btn" %>
+<% end %>

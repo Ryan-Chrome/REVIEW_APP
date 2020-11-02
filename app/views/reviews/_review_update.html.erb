@@ -1,0 +1,324 @@
+<div id = "ReviewNew">
+    <div id = "ReviewForm">
+        <div class = "review-form-content">
+            <%= form_with(model: @review, local: true) do |f| %>
+                <div class = "form_field">
+                    <%= f.label :name, "レビュー対象" %>
+                    <%= f.text_field :name, class: "form" %>
+                </div>
+                <div class = "form_field">
+                    <%= f.label :category, "カテゴリー" %>
+                    <% categorys = [
+                        ["書籍", "書籍"],
+                        ["DVD・ミュージック・ゲーム", "DVD・ミュージック・ゲーム"],
+                        ["家電・カメラ・AV機器", "家電・カメラ・AV機器"],
+                        ["パソコン・オフィス用品", "パソコン・オフィス用品"],
+                        ["ホーム・キッチン・ベッド・DIY", "ホーム・キッチン・ベッド・DIY"],
+                        ["食品・飲料・お酒", "食品・飲料・お酒"],
+                        ["薬・美容", "薬・美容"],
+                        ["ホビー", "ホビー"],
+                        ["衣類・装飾品", "衣類・装飾品"],
+                        ["スポーツ", "スポーツ"],
+                        ["アウトドア", "アウトドア"],
+                        ["車・バイク", "車・バイク"],
+                        ["お店", "お店"],
+                        ["観光地", "観光地"],
+                        ["その他", "その他"]
+                    ] %>
+                    <%= f.select :category, categorys %>
+                </div>
+
+                <div class = "form-group" id = "star">
+                    <%= f.label :rate, "評価：" %>
+                    <%= f.hidden_field :rate, id: :review_star %>
+                </div>
+
+                <div class = "form_field">
+                    <%= f.label :content, "レビュー" %>
+                    <%= f.text_area :content, class: "form text" %>
+                </div>
+
+                <div class = "image_form_content">
+                    <div class = "image_form">
+                        <%= f.label :image1, class: "image_label" do %>
+                            <div id = "preview1" class = "preview">
+                                <% if @review.image1.attached? %>
+                                    <%= image_tag @review.image1, id: "image1" %>
+                                <% else %>
+                                    <span>＋</span>
+                                <% end %>
+                            </div>
+                        <% end %>
+                        <%= f.file_field :image1, class: "image_field" %>
+                    </div>
+
+                    <div class = "image_form">
+                        <%= f.label :image2, class: "image_label" do %>
+                            <div id = "preview2" class = "preview">
+                                <% if @review.image2.attached? %>
+                                    <%= image_tag @review.image2, id: "image2" %>
+                                <% else %>
+                                    <span>＋</span>
+                                <% end %>
+                            </div>
+                        <% end %>
+                        <%= f.file_field :image2, class: "image_field" %>
+                    </div>
+
+                    <div class = "image_form">
+                        <%= f.label :image3, class: "image_label" do %>
+                            <div id = "preview3" class = "preview">
+                                <% if @review.image3.attached? %>
+                                    <%= image_tag @review.image3, id: "image3" %>
+                                <% else %>
+                                    <span>＋</span>
+                                <% end %>
+                            </div>
+                        <% end %>
+                        <%= f.file_field :image3, class: "image_field" %>
+                    </div>
+
+                    <div class = "image_form">
+                        <%= f.label :image4, class: "image_label" do %>
+                            <div id = "preview4" class = "preview">
+                                <% if @review.image4.attached? %>
+                                    <%= image_tag @review.image4, id: "image4" %>
+                                <% else %>
+                                    <span>＋</span>
+                                <% end %>
+                            </div>
+                        <% end %>
+                        <%= f.file_field :image4, class: "image_field" %>
+                    </div>
+
+                    <div class = "image_form">
+                        <%= f.label :image5, class: "image_label" do %>
+                            <div id = "preview5" class = "preview">
+                                <% if @review.image5.attached? %>
+                                    <%= image_tag @review.image5, id: "image5" %>
+                                <% else %>
+                                    <span>＋</span>
+                                <% end %>
+                            </div>
+                        <% end %>
+                        <%= f.file_field :image5, class: "image_field" %>
+                    </div>
+                    
+                </div>
+
+                <%= f.submit "編集終了", class: "btn" %>
+            <% end %>
+        </div>
+    </div>
+</div>
+
+<script type = "text/javascript">
+    $("#star").raty({
+        size: 36,
+        starOff: "<%= asset_path('star-off.png') %>",
+        starOn: "<%= asset_path('star-on.png') %>",
+        starHalf: "<%= asset_path('star-half.png') %>",
+        scoreName: 'review[rate]',
+        score: "<%= @review.rate %>",
+        half: true
+    });
+
+    var img1 = document.getElementById("review_image1");
+    var img2 = document.getElementById("review_image2");
+    var img3 = document.getElementById("review_image3");
+    var img4 = document.getElementById("review_image4");
+    var img5 = document.getElementById("review_image5");
+    var preview1 = document.getElementById("preview1");
+    var preview2 = document.getElementById("preview2");
+    var preview3 = document.getElementById("preview3");
+    var preview4 = document.getElementById("preview4");
+    var preview5 = document.getElementById("preview5");
+    var image1 = document.getElementById("image1");
+    var image2 = document.getElementById("image2");
+    var image3 = document.getElementById("image3");
+    var image4 = document.getElementById("image4");
+    var image5 = document.getElementById("image5");
+
+
+    img1.addEventListener("change", function(evt){
+        var file = evt.target.files;
+        var num = file.length;
+        var preview_image = document.getElementById("preview-image1");
+        if (num == 0) {
+            if (gon.image1_attach) {
+                image1.style.display = "block";
+                
+                preview1.removeChild(preview_image);
+            } else {
+                preview1.innerHTML = "<span>＋</span>";
+            }
+        } else {
+            var reader = new FileReader();
+            reader.readAsDataURL(file[0]);
+
+            reader.onload = function(){
+                var dataUrl = reader.result;
+                if (gon.image1_attach) {
+                    image1.style.display = "none";
+
+                    if (preview_image) {
+                        preview1.removeChild(preview_image);
+                    }
+
+                    var NewElement = document.createElement('img');
+                    NewElement.src =  dataUrl;
+                    NewElement.setAttribute("id", "preview-image1");
+                    preview1.appendChild(NewElement);
+                } else {
+                    preview1.innerHTML = "<img src = '" + dataUrl + "' >";
+                }
+            }
+        }
+    }, false);
+
+    img2.addEventListener("change", function(evt){
+        var file = evt.target.files;
+        var num = file.length;
+        var preview_image = document.getElementById("preview-image2");
+        if (num == 0) {
+            if (gon.image2_attach) {
+                image2.style.display = "block";
+                
+                preview2.removeChild(preview_image);
+            } else {
+                preview2.innerHTML = "<span>＋</span>";
+            }
+        } else {
+            var reader = new FileReader();
+            reader.readAsDataURL(file[0]);
+
+            reader.onload = function(){
+                var dataUrl = reader.result;
+                if (gon.image2_attach) {
+                    image2.style.display = "none";
+
+                    if (preview_image) {
+                        preview2.removeChild(preview_image);
+                    }
+
+                    var NewElement = document.createElement('img');
+                    NewElement.src = dataUrl;
+                    NewElement.setAttribute("id", "preview-image2");
+                    preview2.appendChild(NewElement);
+                } else {
+                    preview2.innerHTML = "<img src = '" + dataUrl + "'>";
+                }
+            }
+        }
+    }, false);
+
+    img3.addEventListener("change", function(evt){
+        var file = evt.target.files;
+        var num = file.length;
+        var preview_image = document.getElementById("preview-image3");
+        if (num == 0) {
+            if (gon.image3_attach) {
+                image3.style.display = "block";
+
+                preview3.removeChild(preview_image);
+            } else {
+                preview3.innerHTML = "<span>＋</span>";
+            }
+        } else {
+            var reader = new FileReader();
+            reader.readAsDataURL(file[0]);
+
+            reader.onload = function(){
+                var dataUrl = reader.result;
+                if (gon.image3_attach) {
+                    image3.style.display = "none";
+
+                    if (preview_image) {
+                        preview3.removeChild(preview_image);
+                    }
+
+                    var NewElement = document.createElement("img");
+                    NewElement.src = dataUrl;
+                    NewElement.setAttribute("id", "preview-image3");
+                    preview3.appendChild(NewElement);
+                } else {
+                    preview3.innerHTML = "<img src = '" + dataUrl + "' >";
+                }
+            }
+        }
+    }, false);
+
+    img4.addEventListener("change", function(evt){
+        var file = evt.target.files;
+        var num = file.length;
+        var preview_image = document.getElementById("preview-image4");
+        if (num == 0) {
+            if (gon.image4_attach) {
+                image4.style.display = "block";
+
+                preview4.removeChild(preview_image);
+            } else {
+                preview4.innerHTML = "<span>＋</span>";
+            }
+        } else {
+            var reader = new FileReader();
+            reader.readAsDataURL(file[0]);
+
+            reader.onload = function(){
+                var dataUrl = reader.result;
+                if (gon.image4_attach) {
+                    image4.style.display = "none";
+
+                    if (preview_image) {
+                        preview4.removeChild(preview_image);
+                    }
+
+                    var NewElement = document.createElement("img");
+                    NewElement.src = dataUrl;
+                    NewElement.setAttribute("id", "preview-image4");
+                    preview4.appendChild(NewElement);
+                } else {
+                    preview4.innerHTML = "<img src = '" + dataUrl + "' >";
+                }
+            }
+        }
+    }, false);
+
+    img5.addEventListener("change", function(evt){
+        var file = evt.target.files;
+        var num = file.length;
+        var preview_image = document.getElementById("preview-image5");
+        if (num == 0) {
+            if (gon.image5_attach) {
+                image5.style.display = "block";
+
+                preview5.removeChild(preview_image);
+            } else {
+                preview5.innerHTML = "<span>＋</span>";
+            }
+        } else {
+            var reader = new FileReader();
+            reader.readAsDataURL(file[0]);
+
+            reader.onload = function(){
+                var dataUrl = reader.result;
+                if (gon.image5_attach) {
+                    image5.style.display = "none";
+
+                    if (preview_image) {
+                        preview5.removeChild(preview_image);
+                    }
+
+                    var NewElement = document.createElement("img");
+                    NewElement.src = dataUrl;
+                    NewElement.setAttribute("id", "preview-image5");
+                    preview5.appendChild(NewElement);
+                } else {
+                    preview5.innerHTML = "<img src = '" + dataUrl + "' >";
+                }
+            }
+        }
+    }, false);
+
+
+</script>
