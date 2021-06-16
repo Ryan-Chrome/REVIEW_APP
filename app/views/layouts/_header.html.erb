@@ -1,13 +1,13 @@
 <div id = "header">
-    <h2 id = "HeaderLogo">Reviews</h2>
-    <% if user_signed_in? %>
-        <ul>
-            <%= link_to destroy_user_session_path, method: :delete do %><li class = "signup-link"><i class="fas fa-sign-out-alt"></i> ログアウト</li><% end %>
-        </ul>
-    <% else %>
-        <ul>
-            <%= link_to new_user_registration_path do %><li class = "signup-link">サインアップ</li><% end %>
-            <%= link_to new_user_session_path do %><li class = "login-link"><i class="fas fa-sign-in-alt"></i> ログイン</li><% end %>
-        </ul>
-    <% end %>
+  <h2 id = "HeaderLogo">Reviews</h2>
+  <% if user_signed_in? %>
+    <ul>
+      <%= link_to destroy_user_session_path, method: :delete do %><li class = "signup-link"><i class="fas fa-sign-out-alt"></i> ログアウト</li><% end %>
+    </ul>
+  <% else %>
+    <ul>
+      <%= link_to new_user_registration_path do %><li class = "signup-link">サインアップ</li><% end %>
+      <%= link_to new_user_session_path do %><li class = "login-link">ログイン</li><% end %>
+    </ul>
+  <% end %>
 </div>

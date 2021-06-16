@@ -1,61 +1,66 @@
 <div class = "Show">
-    <% if @user.image.attached? %>
-        <%= image_tag @user.image, class: "user_img" %>
-    <% else %>
-        <%= image_tag "daiana.jpg", class: "user_img" %>
-    <% end %>
-    <h5><%= @user.name %></h5>
-    <div id = "Status">
-        <ul>
-            <li><span>review</span><span><i class="far fa-newspaper"></i> <%= @reviews.count %></span></li>
-            <li><span>good!</span><span><i class="fas fa-thumbs-up"></i> <%= @like_count %></span></li>
-        </ul>
+  <% if @user.image.attached? %>
+    <%= image_tag @user.image, class: "user_img" %>
+  <% else %>
+    <div class = "user-not-photo">
+      <i class="fas fa-user"></i>
     </div>
-    <% if user_signed_in? && current_user != @user %>
-        <div id = "FollowForm">
-            <span>このレビュアーをお気に入り登録</span>
-            <%= render 'shared/follow_form' %>
-        </div>
-    <% end %>
-    <div id = "MyReviewContainer">
-        <h3><i class="far fa-newspaper"></i> レビュー</h3>
-        <div id = "MyReviewContent">
-            <% @reviews.each do |review| %>
-                <%= link_to review do %>
-                    <div class = "ReviewLink">
-                        <div class = "img-content">
-                            <% if review.image1.attached? %>
-                                <%= image_tag review.image1 %>
-                            <% else %>
-                                <%= image_tag('daiana.jpg') %>
-                            <% end %>
-                        </div>
-                        <div class = "review-content">
-                            <span class = "review-name"><%= review.name %></span>
-                            <div id = "star-rate-<%= review.id %>" class = "star"></div>
-                            <script>
-                                $("#star-rate-<%= review.id %>").raty({
-                                    size: 36,
-                                    starOff: '<%= asset_path('star-off.png') %>',
-                                    starOn: '<%= asset_path('star-on.png') %>',
-                                    starHalf: '<%= asset_path('star-half.png') %>',
-                                    half: true,
-                                    readOnly: true,
-                                    score: <%= review.rate %>,
-                                });
-                            </script>
-                        </div>
-                        <% if @user == current_user %>
-                            <div class = "config-content">
-                                <%= link_to "編集", edit_review_path(review) %>
-                                <%= link_to "削除", review, method: :delete %>
-                            </div>
-                        <% end %>
-                    </div>
-                <% end %>
+  <% end %>
+  <h5><%= @user.name %></h5>
+  <div id = "Status">
+    <ul>
+      <li><span>review</span><span><i class="far fa-newspaper"></i> <%= @reviews.count %></span></li>
+      <li><span>good!</span><span><i class="fas fa-thumbs-up"></i> <%= @like_count %></span></li>
+    </ul>
+  </div>
+  <% if user_signed_in? && current_user != @user %>
+    <div id = "FollowForm">
+      <span>このレビュアーをお気に入り登録</span>
+      <%= render 'shared/follow_form' %>
+    </div>
+  <% end %>
+  <div id = "MyReviewContainer">
+    <h3><i class="far fa-newspaper"></i> レビュー</h3>
+    <div id = "MyReviewContent">
+      <% @reviews.each do |review| %>
+        <%= link_to review do %>
+          <div class = "ReviewLink">
+            <div class = "img-content">
+              <% if review.image1.attached? %>
+                <%= image_tag review.image1 %>
+              <% else %>
+                <div class = "not-photo-content">
+                  <i class="far fa-image"></i>
+                  <span>no-photo</span>
+                </div>
+              <% end %>
+            </div>
+            <div class = "review-content">
+              <span class = "review-name"><%= review.name %></span>
+              <div id = "star-rate-<%= review.id %>" class = "star"></div>
+              <script>
+                $("#star-rate-<%= review.id %>").raty({
+                  size: 36,
+                  starOff: '<%= asset_path('star-off.png') %>',
+                  starOn: '<%= asset_path('star-on.png') %>',
+                  starHalf: '<%= asset_path('star-half.png') %>',
+                  half: true,
+                  readOnly: true,
+                  score: <%= review.rate %>,
+                });
+              </script>
+            </div>
+            <% if @user == current_user %>
+              <div class = "config-content">
+                <%= link_to "編集", edit_review_path(review) %>
+                <%= link_to "削除", review, method: :delete %>
+              </div>
             <% end %>
-            <div class = "paginate-content"><%=  will_paginate @reviews, previous_label: '&lt 前へ', next_label: '次へ &gt' %></div>
-        </div>
+          </div>
+        <% end %>
+      <% end %>
+      <div class = "paginate-content"><%=  will_paginate @reviews, previous_label: '&lt 前へ', next_label: '次へ &gt' %></div>
     </div>
+  </div>
 </div>
 

@@ -10,13 +10,13 @@ class User < ApplicationRecord
   #ユーザーフォロー
   has_many :relationships, dependent: :destroy
   has_many :followings, through: :relationships, source: :follow
-  has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: 'follow_id', dependent: :destroy
+  has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "follow_id", dependent: :destroy
   has_many :followers, through: :reverse_of_relationships, source: :user
 
   #レビューお気に入り
   has_many :review_relationships, dependent: :destroy
 
-  validates :name, presence: true, length: {maximum: 30}
+  validates :name, presence: true, length: { maximum: 30 }
   has_one_attached :image
 
   #follow関連
