@@ -17,6 +17,7 @@ class User < ApplicationRecord
   has_many :review_relationships, dependent: :destroy
 
   validates :name, presence: true, length: { maximum: 30 }
+  validates :admin, presence: true
   has_one_attached :image
 
   #follow関連

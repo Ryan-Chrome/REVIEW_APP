@@ -1,13 +1,14 @@
 Rails.application.routes.draw do
-  root 'pages#home'
-  get '/show/:id', to: 'pages#show', as: 'show'
-  get '/follow', to: 'pages#follow', as: 'follow'
-  resources :reviews, only:[:show, :index, :new, :create, :edit, :update, :destroy]
-  resources :relationships, only:[:create, :destroy]
-  resources :review_relationships, only:[:create, :destroy]
+  root "pages#home"
+  get "/follow", to: "users#follow", as: "follow"
+  resources :admins, only: [:index]
+  resources :reviews, only: [:show, :index, :new, :create, :edit, :update, :destroy]
+  resources :relationships, only: [:create, :destroy]
+  resources :review_relationships, only: [:create, :destroy]
+  resources :users, only: [:show]
   devise_for :users, :controllers => {
-    :registrations => 'users/registrations'
-  }
+                       :registrations => "users/registrations",
+                     }
 
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"

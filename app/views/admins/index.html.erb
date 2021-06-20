@@ -1,0 +1,39 @@
+<div id = "MainContent">
+  <div id = "AdminIndex">
+    <h1>管理者ホーム</h1>
+    <div class = "app-details-container">
+      <table>
+      </table>
+    </div>
+    <div class = "report-container">
+      <table>
+        <tbody>
+          <tr>
+            <td>総ユーザー数</td>
+            <td><%= @users.length %></td>
+          </tr>
+          <tr>
+            <td>総レビュー数</td>
+            <td><%= @reviews.length %></td>
+          </tr>
+          <tr>
+            <td>未処理確認報告数</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>確認済報告数</td>
+          </tr>
+          <tr>
+            <td>今週ユーザー新規登録数</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>今週レビュー新規作成数</td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>
