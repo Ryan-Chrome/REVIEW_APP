@@ -20,6 +20,7 @@
 
 # Ignore uploaded files in development.
 /config/database.yml
+docker-compose.yml
 
 /storage/*
 !/storage/.keep
