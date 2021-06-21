@@ -16,8 +16,12 @@ class User < ApplicationRecord
   #レビューお気に入り
   has_many :review_relationships, dependent: :destroy
 
-  validates :name, presence: true, length: { maximum: 30 }
+  # レポート
+  has_many :reports, dependent: :destroy
+
   has_one_attached :image
+
+  validates :name, presence: true, length: { maximum: 30 }
 
   #follow関連
 
