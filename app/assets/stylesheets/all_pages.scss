@@ -846,6 +846,15 @@ body {
 		}
 		#RightContent {
 			width: 55%;
+			position: relative;
+			.report-link {
+				position: absolute;
+				top: 5px;
+				right: 15px;
+				a {
+					font-size: 14px;
+				}
+			}
 			.main-photo {
 				position: relative;
 				width: 100%;
@@ -1345,6 +1354,42 @@ body {
 		background: red;
 		h1 {
 			margin: 0;
+		}
+	}
+	#NewReport {
+		padding: 15px;
+		h1 {
+			margin: 10px 0 15px 0;
+			font-size: 20px;
+		}
+		.review-name {
+			margin-left: 5px;
+			margin-bottom: 5px;
+			display: block;
+		}
+		form {
+			background: white;
+			border-radius: 5px;
+			padding: 15px;
+			label {
+				display: block;
+				padding-left: 2px;
+			}
+			.form {
+				display: block;
+				margin-bottom: 15px;
+				width: 100%;
+			}
+			.text {
+				resize: none;
+				height: 300px;
+			}
+			.btn-div {
+				text-align: right;
+				.btn {
+					width: 100px;
+				}
+			}
 		}
 	}
 }

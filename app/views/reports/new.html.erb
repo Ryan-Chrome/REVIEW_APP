@@ -1,0 +1,16 @@
+<div id = "MainContent">
+  <div id = "NewReport">
+    <h1>通報フォーム</h1>
+    <span class = "review-name">対象レビュー：<%= @review.name %></span>
+    <%= form_with model: @report, local: true do |f| %>
+      <%= f.hidden_field :review_id, value: "#{@review.id}" %>
+      <%= f.label :subject, "件名(必須)" %>
+      <%= f.text_field :subject, placeholder: "20文字以内", class: "form" %>
+      <%= f.label :content, "内容(必須)" %>
+      <%= f.text_area :content, placeholder: "400文字以内", class: "form text" %>
+      <div class = "btn-div">
+        <%= f.submit "通報", class: "btn" %>
+      </div>
+    <% end %>
+  </div>
+</div>

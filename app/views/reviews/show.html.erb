@@ -24,6 +24,7 @@
       <%= render 'shared/review_relationship_form' %>
     </div>
     <div id = "RightContent">
+      <span class = "report-link"><%= link_to "運営に通報する", new_report_path(review_id: @review.id) %></span>
       <div class = "main-photo">
         <%= image_tag @review.image1, id: "image1" if @review.image1.attached? %>
       </div>

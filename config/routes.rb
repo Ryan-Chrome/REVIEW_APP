@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   resources :relationships, only: [:create, :destroy]
   resources :review_relationships, only: [:create, :destroy]
   resources :users, only: [:show]
+  resources :reports, only: [:index, :show, :new, :create]
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

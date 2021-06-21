@@ -51,7 +51,7 @@ class ReviewsController < ApplicationController
   def create
     @review = current_user.reviews.build(params_review)
     if @review.save
-      redirect_to show_path(current_user)
+      redirect_to user_path(current_user)
     else
       render "new"
     end
@@ -79,7 +79,7 @@ class ReviewsController < ApplicationController
       @review.image4.purge if @review.image4.attached?
       @review.image5.purge if @review.image5.attached?
       @review.destroy
-      redirect_to show_path(current_user)
+      redirect_to user_path(current_user)
     else
       redirect_to @review
     end
